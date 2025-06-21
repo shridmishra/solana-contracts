@@ -1,0 +1,40 @@
+# === General ===
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+*.tmp
+*.swp
+.env
+.env.*
+
+# === Rust (Native + Anchor) ===
+**/target/
+**/Cargo.lock
+**/.cargo/
+
+# === Anchor-specific ===
+**/.anchor/
+**/.anchor/program-*
+
+# === Build Artifacts ===
+**/dist/
+**/build/
+**/out/
+**/coverage/
+
+# === IDE / Editor ===
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+
+# === Git ===
+*.orig
+*.rej
+
+# === OS & Misc ===
+*.bak
+*.old
+*~
