@@ -1,16 +1,19 @@
-use solana_program::program_error::ProgramError;
 use thiserror::Error;
+use solana_program::program_error::ProgramError;
 
 #[derive(Error, Debug, Copy, Clone)]
 pub enum StakingError {
-    #[error("Invalid Instruction")]
-    InvalidInstruction,
-
-    #[error("Account not rent exempt")]
-    NotRentExempt,
+    #[error("Invalid PDA derived")]
+    InvalidPda,
 
     #[error("Pool already initialized")]
-    AlreadyInitialized,
+    PoolAlreadyInitialized,
+
+    #[error("User stake account already exists")]
+    UserAlreadyStaked,
+
+    #[error("Nothing to claim")]
+    NothingToClaim,
 }
 
 impl From<StakingError> for ProgramError {
