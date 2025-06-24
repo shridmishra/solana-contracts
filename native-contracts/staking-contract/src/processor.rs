@@ -1,4 +1,3 @@
-use std::vec::Splice;
 
 use crate::{
     error::StakingError,
@@ -27,14 +26,23 @@ pub fn process(
     instruction_data: &[u8],
 ) -> ProgramResult {
     let instruction = StakingInstruction::try_from_slice(instruction_data)?;
+
     match instruction {
         StakingInstruction::InitializePool { reward_rate } => {
             process_initialize_pool(accounts, reward_rate, program_id)
         }
-        StakingInstruction::Stake { amount } => process_stake(accounts, amount, program_id),
-        StakingInstruction::UnStake { amount } => process_unstake(accounts, amount, program_id),
+        StakingInstruction::Stake { amount } => {
+            process_stake(accounts, amount, program_id)
+        }
+        StakingInstruction::UnStake { amount } => {
+            process_unstake(accounts, amount, program_id)
+        }
+        StakingInstruction::ClaimRewards => {
+            process_claim_rewards(accounts, program_id)
+        }
     }
 }
+
 
 pub fn process_initialize_pool(
     accounts: &[AccountInfo],
@@ -55,7 +63,7 @@ pub fn process_initialize_pool(
         return Err(ProgramError::IncorrectProgramId);
     }
 
-    let mut pool_data = StakingPool::try_from_slice(&pool_account.data.borrow())?;
+    let pool_data = StakingPool::try_from_slice(&pool_account.data.borrow())?;
     if pool_data.total_staked != 0 {
         return Err(ProgramError::AccountAlreadyInitialized);
     }
