@@ -21,7 +21,7 @@ describe("staking", () => {
   let staking_pool: anchor.web3.PublicKey;
   const authority = provider.wallet;
 
-  it("initializes the staking pool", async () => {
+  it("initialize the staking pool", async () => {
     mint = await createMint(
       provider.connection,
       authority.payer,
