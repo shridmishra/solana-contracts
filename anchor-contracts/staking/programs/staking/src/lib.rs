@@ -9,8 +9,10 @@ pub mod utils;
 
 use context::*;
 
+
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg5uVhRxg9bC"); 
 
+#[program]
 
 pub mod staking {
     use super::*;
