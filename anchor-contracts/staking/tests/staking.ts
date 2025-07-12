@@ -2,7 +2,7 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { Staking } from "../target/types/staking";
 import {
-  createAccount,
+  
   getMinimumBalanceForRentExemptAccount,
   createInitializeAccountInstruction,
   TOKEN_PROGRAM_ID,
